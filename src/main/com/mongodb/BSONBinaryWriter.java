@@ -16,16 +16,17 @@
 
 package com.mongodb;
 
+import static org.bson.util.Assertions.isTrue;
+
+import java.util.Stack;
+
 import org.bson.io.OutputBuffer;
 import org.bson.types.BSONTimestamp;
 import org.bson.types.Binary;
 import org.bson.types.ObjectId;
 
-import java.util.Stack;
-
-import static org.bson.util.Assertions.isTrue;
-
 class BSONBinaryWriter extends BSONWriter {
+	//Test
     private final BSONBinaryWriterSettings binaryWriterSettings;
 
     private final OutputBuffer buffer;
@@ -420,7 +421,8 @@ class BSONBinaryWriter extends BSONWriter {
             this.position = buffer.getPosition();
         }
 
-        protected void reset() {
+        @Override
+		protected void reset() {
             super.reset();
             buffer.truncateToPosition(mark.position);
         }
